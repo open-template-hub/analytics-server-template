@@ -3,7 +3,6 @@ import { EventRepository } from '../repository/event.repository';
 import { Event } from '../interface/event.interface';
 import { EventCategory } from '../enum/event-category.enum';
 import { EventFilter } from '../interface/event-filter.interface';
-import { Query } from 'mongoose';
 
 export class EventController {
   /**
@@ -30,6 +29,12 @@ export class EventController {
     return await eventRepository.createEvent(event);
   };
 
+  /**
+   * filters events
+   * @param context context
+   * @param filter filter
+   * @returns filtered events
+   */
   filterEvents = async (context: Context, filter: EventFilter) => {
     const eventRepository = await new EventRepository().initialize(
       context.mongodb_provider.getConnection()
@@ -40,6 +45,11 @@ export class EventController {
     return await eventRepository.filterEvents(query, filter.limit);
   };
 
+  /**
+   * creates query from the filter
+   * @param filter filter
+   * @returns query
+   */
   getQueryFromFilter = (filter: EventFilter) => {
     var query = {} as any;
 

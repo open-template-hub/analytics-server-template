@@ -3,12 +3,12 @@
  */
 
 import mongoose, { Connection } from 'mongoose';
-import { Builder } from '../util/builder.util';
+import { BuilderUtil } from '../util/builder.util';
 
 export class MongoDbProvider {
   // mongoose connection
   private connection: Connection = mongoose.createConnection();
-  private builder: Builder = new Builder();
+  private builder: BuilderUtil = new BuilderUtil();
   private poolLimit: number = 1;
   private readonly preloadDataTemplatePath = './assets/sql/preload.data.json';
 

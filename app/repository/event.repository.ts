@@ -1,5 +1,4 @@
 import { EventDataModel } from '../data/event.data';
-import { EventFilter } from '../interface/event-filter.interface';
 import { Event } from '../interface/event.interface';
 
 export class EventRepository {
