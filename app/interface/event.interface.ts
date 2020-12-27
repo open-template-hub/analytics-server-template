@@ -1,3 +1,7 @@
+/**
+ * @description holds event interface
+ */
+
 import { EventCategory } from '../enum/event-category.enum';
 
 export interface Event {

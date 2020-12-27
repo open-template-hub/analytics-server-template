@@ -27,7 +27,7 @@ router.post(subRoutes.root, async (req: Request, res: Response) => {
     res.locals.ctx as Context,
     {
       name: req.body.name,
-      category: EventCategory[req.body.category],
+      category: EventCategory[req.body.category as EventCategory],
       timestamp: req.body.timestamp,
       payload: req.body.payload,
     } as Event
@@ -41,7 +41,7 @@ router.get(subRoutes.root, async (req: Request, res: Response) => {
     res.locals.ctx as Context,
     {
       name: req.query.name,
-      category: EventCategory[req.query.category as string],
+      category: EventCategory[req.query.category as EventCategory],
       start: parseInt(req.query.start as string),
       end: parseInt(req.query.end as string),
       limit: parseInt(req.query.limit as string),
