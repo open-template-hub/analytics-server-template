@@ -7,7 +7,7 @@ import { DebugLogUtil } from '../util/debug-log.util';
 
 export class BuilderUtil {
   constructor(private debugLogUtil = new DebugLogUtil()) {}
-
+  
   /**
    * builds template from a file
    * @param filePath file path

@@ -4,8 +4,8 @@
 import dotenv from 'dotenv';
 import cors from 'cors';
 import { Routes } from './app/route/index.route';
-import express = require('express');
-import bodyParser = require('body-parser');
+import express from 'express';
+import bodyParser from 'body-parser';
 import { DebugLogUtil } from './app/util/debug-log.util';
 
 const debugLogUtil = new DebugLogUtil();

@@ -1,5 +1,5 @@
 /**
- * @description holds auth util
+ * @description holds authentication util
  */
 
 import { TokenUtil } from './token.util';
