@@ -1,4 +1,4 @@
-import { EventCategory } from "../enum/event-category.enum";
+import { EventCategory } from '../enum/event-category.enum';
 
 export interface Event {
   name: string;

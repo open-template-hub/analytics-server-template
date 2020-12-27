@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { debugLog } from '../util/debug-log.util';
 
-export class Builder {
+export class BuilderUtil {
   buildTemplateFromFile = (filePath: string, params?: Map<string, string>) => {
     var template = '';
 

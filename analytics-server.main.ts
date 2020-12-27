@@ -6,7 +6,6 @@ import cors from 'cors';
 import { Routes } from './app/route/index.route';
 import express = require('express');
 import bodyParser = require('body-parser');
-import { configureCronJobs } from './app/util/cron.util';
 import { debugLog } from './app/util/debug-log.util';
 
 // use .env file
