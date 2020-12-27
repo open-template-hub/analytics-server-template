@@ -6,11 +6,13 @@ import cors from 'cors';
 import { Routes } from './app/route/index.route';
 import express = require('express');
 import bodyParser = require('body-parser');
-import { debugLog } from './app/util/debug-log.util';
+import { DebugLogUtil } from './app/util/debug-log.util';
+
+const debugLogUtil = new DebugLogUtil();
 
 // use .env file
 const env = dotenv.config();
-debugLog(env.parsed);
+debugLogUtil.log(env.parsed);
 
 // express init
 const app: express.Application = express();

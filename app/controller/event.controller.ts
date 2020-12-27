@@ -1,3 +1,7 @@
+/**
+ * @description holds event controller
+ */
+
 import { Context } from '../interface/context.interface';
 import { EventRepository } from '../repository/event.repository';
 import { Event } from '../interface/event.interface';

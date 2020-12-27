@@ -1,3 +1,7 @@
+/**
+ * @description holds context interface
+ */
+
 import { UserRole } from '../enum/user-role.enum';
 import { MongoDbProvider } from '../provider/mongo.provider';
 

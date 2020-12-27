@@ -1,5 +1,5 @@
 /**
- * @description holds authentication util
+ * @description holds auth util
  */
 
 import { TokenUtil } from './token.util';
@@ -9,6 +9,11 @@ export class AuthUtil {
   private adminRoles = [UserRole.ADMIN];
   constructor(private readonly tokenService: TokenUtil) {}
 
+  /**
+   * gets current user from request
+   * @param req request
+   * @returns current user
+   */
   getCurrentUser = async (req: { headers: { authorization: string } }) => {
     let authToken = '';
     let currentUser = null;
@@ -30,6 +35,11 @@ export class AuthUtil {
     return currentUser;
   };
 
+  /**
+   * checks user role is admin or not
+   * @param role user role
+   * @returns true if admin, else false
+   */
   isAdmin = (role: UserRole) => {
     if (this.adminRoles.indexOf(role) >= 0) {
       return true;

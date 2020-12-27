@@ -1,21 +1,26 @@
 /**
- * @description holds token service
+ * @description holds token util
  */
 
 import { TokenExpiredError, verify } from 'jsonwebtoken';
 import { ResponseCode } from '../constant';
 
 export class TokenUtil {
-  verifyAccessToken = async (accessToken) => {
+  /**
+   * verifies access token
+   * @param accessToken access token
+   */
+  verifyAccessToken = async (accessToken: string) => {
     try {
-      return verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
+      return verify(accessToken, process.env.ACCESS_TOKEN_SECRET as string);
     } catch (e) {
+      var ex = e as any;
       if (e instanceof TokenExpiredError) {
-        e.responseCode = ResponseCode.UNAUTHORIZED;
+        ex.responseCode = ResponseCode.UNAUTHORIZED;
       } else {
-        e.responseCode = ResponseCode.FORBIDDEN;
+        ex.responseCode = ResponseCode.FORBIDDEN;
       }
-      throw e;
+      throw ex;
     }
   };
 }
