@@ -1,0 +1,19 @@
+### Add Event
+POST http://localhost:4005/event
+Content-Type: application/json
+Authorization: Bearer token
+
+{
+ "name": "test",
+ "timestamp": 1557003600000,
+ "payload": {
+  "testKey": "testValue",
+ }
+}
+
+### Get All Events
+GET http://localhost:4005/event
+Authorization: Bearer token
+
+### Filter Events
+GET http://localhost:4005/event?name=test&start=1557003600000&end=1557003600000&category=DEFAULT&reporter=service-user&limit=5

@@ -1,0 +1,7 @@
+{
+  "name": "Analytics Server Template",
+  "description": "Analytics Server Template in NodeJS Express.js",
+  "repository": "https://github.com/open-template-hub/analytics-server-template",
+  "logo": "https://avatars2.githubusercontent.com/u/65504426?s=200&v=4",
+  "keywords": ["server", "template", "nodejs", "typescript", "mongodb", "mongoose"]
+}

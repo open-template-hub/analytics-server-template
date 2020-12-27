@@ -1,0 +1,550 @@
+{
+	"info": {
+		"_postman_id": "8dd0eaee-dc92-4977-a29d-03c34571a8a5",
+		"name": "analytics-server-regression",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "Create Event Success [201]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is Created\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains event name\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"event-name\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin-auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{event-name}}\",\r\n    \"payload\": {\r\n        \"testData\": \"testValue\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/event",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Event With Category Success [201]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is Created\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains category purchase\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"specific-category\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin-auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{event-name}}\",\r\n    \"category\": \"{{specific-category}}\",\r\n    \"payload\": {\r\n        \"testData\": \"testValue\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/event",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Event With Wrong Category Success [201]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is Created\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains category default\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include('DEFAULT');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin-auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{event-name}}\",\r\n    \"category\": \"WRONG\",\r\n    \"payload\": {\r\n        \"testData\": \"testValue\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/event",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Event With Timestamp Success [201]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is Created\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains timestamp\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"specific-timestamp\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin-auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{event-name}}\",\r\n    \"timestamp\": {{specific-timestamp}},\r\n    \"payload\": {\r\n        \"testData\": \"testValue\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/event",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Events By Name Success [200]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains event name\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"event-name\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin-auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/event?name={{event-name}}",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"event"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{event-name}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Events By Category Success [200]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains specific category\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"specific-category\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin-auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/event?category={{specific-category}}",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"event"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "{{specific-category}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Events By Start and End Date Success [200]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains specific timestamp\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"specific-timestamp\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin-auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/event?start={{specific-timestamp}}&end={{specific-timestamp}}",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"event"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "{{specific-timestamp}}"
+								},
+								{
+									"key": "end",
+									"value": "{{specific-timestamp}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Events By Reporter Success [200]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains reporter\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"reporter\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin-auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/event?reporter={{reporter}}",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"event"
+							],
+							"query": [
+								{
+									"key": "reporter",
+									"value": "{{reporter}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Events By All Criteria Success [200]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains default category\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include('DEFAULT');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin-auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/event?reporter={{reporter}}&name={{event-name}}&start={{specific-timestamp}}&end={{specific-timestamp}}&category=DEFAULT&limit=2",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"event"
+							],
+							"query": [
+								{
+									"key": "reporter",
+									"value": "{{reporter}}"
+								},
+								{
+									"key": "name",
+									"value": "{{event-name}}"
+								},
+								{
+									"key": "start",
+									"value": "{{specific-timestamp}}"
+								},
+								{
+									"key": "end",
+									"value": "{{specific-timestamp}}"
+								},
+								{
+									"key": "category",
+									"value": "DEFAULT"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Events By Limit [200]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response code is OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include('id');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin-auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/event?limit=3",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"event"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
