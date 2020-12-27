@@ -1,3 +1,7 @@
+/**
+ * @description holds event filter interface
+ */
+
 import { EventCategory } from '../enum/event-category.enum';
 
 export interface EventFilter {

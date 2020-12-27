@@ -20,12 +20,14 @@
   "express-promise-router": "^3.0.3",
   "jsonwebtoken": "^8.5.1",
   "mongoose": "^5.8.2",
-  "node-cron": "^2.0.3",
   "request": "^2.88.2",
   "ts-node": "^8.1.0",
   "typescript": "^3.4.5"
  },
  "devDependencies": {
+  "@types/cors": "^2.8.9",
+  "@types/crypto-js": "^4.0.1",
+  "@types/jsonwebtoken": "^8.5.0",
   "nodemon": "^1.19.0"
  },
  "scripts": {
