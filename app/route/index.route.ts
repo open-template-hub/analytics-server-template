@@ -7,12 +7,13 @@ import {
   adminRoutes as eventAdminRoutes,
 } from './event.route';
 import { NextFunction, Request, Response } from 'express';
-import { context } from '../context';
-import { ErrorHandlerUtil } from '../util/error-handler.util';
-import { EncryptionUtil } from '../util/encryption.util';
-import { MongoDbProvider } from '../provider/mongo.provider';
-import { PreloadUtil } from '../util/preload.util';
-import { DebugLogUtil } from '../util/debug-log.util';
+import { context } from '@open-template-hub/common';
+import { ErrorHandlerUtil } from '@open-template-hub/common';
+import { EncryptionUtil } from '@open-template-hub/common';
+import { MongoDbProvider } from '@open-template-hub/common';
+import { PreloadUtil } from '@open-template-hub/common';
+import { DebugLogUtil } from '@open-template-hub/common';
+import { Environment } from '../../environment';
 
 const subRoutes = {
   root: '/',
@@ -23,7 +24,8 @@ const subRoutes = {
 export module Routes {
   const errorHandlerUtil = new ErrorHandlerUtil();
   const debugLogUtil = new DebugLogUtil();
-  const mongodb_provider = new MongoDbProvider();
+  var mongodb_provider: MongoDbProvider;
+  var environment: Environment;
   var publicRoutes: string[] = [];
   var adminRoutes: string[] = [];
 
@@ -38,6 +40,8 @@ export module Routes {
   }
 
   export const mount = (app: any) => {
+    environment = new Environment();
+    mongodb_provider = new MongoDbProvider(environment.args());
     const preloadUtil = new PreloadUtil();
 
     preloadUtil
@@ -56,7 +60,7 @@ export module Routes {
       next: NextFunction
     ) => {
       let originalSend = res.send;
-      const encryptionUtil = new EncryptionUtil();
+      const encryptionUtil = new EncryptionUtil(environment.args());
       res.send = function () {
         debugLogUtil.log('Starting Encryption: ', new Date());
         let encrypted_arguments = encryptionUtil.encrypt(arguments);
@@ -77,9 +81,10 @@ export module Routes {
         // create context
         res.locals.ctx = await context(
           req,
-          mongodb_provider,
+          environment.args(),
           publicRoutes,
-          adminRoutes
+          adminRoutes,
+          mongodb_provider
         );
 
         next();
