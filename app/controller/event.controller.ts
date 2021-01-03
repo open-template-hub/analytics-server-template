@@ -2,7 +2,7 @@
  * @description holds event controller
  */
 
-import { Context } from '../interface/context.interface';
+import { Context } from '@open-template-hub/common';
 import { EventRepository } from '../repository/event.repository';
 import { Event } from '../interface/event.interface';
 import { EventCategory } from '../enum/event-category.enum';
