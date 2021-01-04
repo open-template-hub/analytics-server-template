@@ -6,8 +6,7 @@ import cors from 'cors';
 import { Routes } from './app/route/index.route';
 import express from 'express';
 import bodyParser from 'body-parser';
-import { DebugLogUtil } from '@open-template-hub/common';
-import { UsageUtil } from '@open-template-hub/common';
+import { DebugLogUtil, UsageUtil } from '@open-template-hub/common';
 
 const debugLogUtil = new DebugLogUtil();
 
@@ -33,7 +32,7 @@ Routes.mount(app);
 const port: string = process.env.PORT || ('4005' as string);
 app.listen(port, () => {
   console.info('Analytics Server is running on port: ', port);
-  
+
   const usageUtil = new UsageUtil();
   const memoryUsage = usageUtil.getMemoryUsage();
   console.info(`Startup Memory Usage: ${memoryUsage.toFixed(2)} MB`);

@@ -4,10 +4,9 @@
 
 import Router from 'express-promise-router';
 import { Request, Response } from 'express';
-import { ResponseCode } from '@open-template-hub/common';
+import { ResponseCode, Context } from '@open-template-hub/common';
 import { EventController } from '../controller/event.controller';
 import { Event } from '../interface/event.interface';
-import { Context } from '@open-template-hub/common';
 import { EventCategory } from '../enum/event-category.enum';
 import { EventFilter } from '../interface/event-filter.interface';
 
