@@ -1,6 +1,6 @@
 {
   "name": "analytics-server-template",
-  "version": "1.0.9",
+  "version": "2.0.0",
   "description": "Template Analytics Server",
   "main": "analytics-server.main.ts",
   "license": "MIT",
