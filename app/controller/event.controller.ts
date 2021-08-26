@@ -30,7 +30,7 @@ export class EventController {
 
     event.reporter = context.username;
 
-    return await eventRepository.createEvent( event );
+    return eventRepository.createEvent( event );
   };
 
   /**
@@ -46,7 +46,7 @@ export class EventController {
 
     const query = this.getQueryFromFilter( filter );
 
-    return await eventRepository.filterEvents( query, filter.limit );
+    return eventRepository.filterEvents( query, filter.limit );
   };
 
   /**
