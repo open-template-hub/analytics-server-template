@@ -17,7 +17,7 @@ Open Template Hub - Analytics Server Template
 [![BTC](https://img.shields.io/badge/Donate-BTC-ORANGE?color=F5922F&style=for-the-badge&logo=bitcoin)](https://commerce.coinbase.com/checkout/8313af5f-de48-498d-b2cb-d98819ca7d5e)
 
 
-Analytics server template for generic usage in Node.js
+Analytics Server Template for generic usage in Node.js
 
 ## Ways to Begin
 
