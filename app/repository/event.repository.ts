@@ -12,8 +12,8 @@ export class EventRepository {
    * initializes event repository
    * @param connection db connection
    */
-  initialize = async (connection: any) => {
-    this.dataModel = await new EventDataModel().getDataModel(connection);
+  initialize = async ( connection: any ) => {
+    this.dataModel = await new EventDataModel().getDataModel( connection );
     return this;
   };
 
@@ -22,11 +22,11 @@ export class EventRepository {
    * @param event event
    * @returns created event
    */
-  createEvent = async (event: Event) => {
+  createEvent = async ( event: Event ) => {
     try {
-      return await this.dataModel.create(event);
-    } catch (error) {
-      console.error('> createEvent error: ', error);
+      return await this.dataModel.create( event );
+    } catch ( error ) {
+      console.error( '> createEvent error: ', error );
       throw error;
     }
   };
@@ -37,11 +37,11 @@ export class EventRepository {
    * @param limit limit
    * @returns filtered events
    */
-  filterEvents = async (query: any, limit: number) => {
+  filterEvents = async ( query: any, limit: number ) => {
     try {
-      return await this.dataModel.find(query).limit(limit);
-    } catch (error) {
-      console.error('> filterEvents error: ', error);
+      return await this.dataModel.find( query ).limit( limit );
+    } catch ( error ) {
+      console.error( '> filterEvents error: ', error );
       throw error;
     }
   };

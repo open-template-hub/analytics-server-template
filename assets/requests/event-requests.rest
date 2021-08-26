@@ -4,11 +4,11 @@ Content-Type: application/json
 Authorization: Bearer token
 
 {
- "name": "test",
- "timestamp": 1557003600000,
- "payload": {
-  "testKey": "testValue",
- }
+  "name": "test",
+  "timestamp": 1557003600000,
+  "payload": {
+    "testKey": "testValue"
+  }
 }
 
 ### Get All Events
