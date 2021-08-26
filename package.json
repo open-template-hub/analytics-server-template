@@ -31,5 +31,23 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/open-template-hub/analytics-server-template.git"
-  }
+  },
+  "keywords": [
+    "analytics",
+    "analyze",
+    "analyzer",
+    "analysis",
+    "analysis-algorithms",
+    "mongo",
+    "mongodb",
+    "mongoose",
+    "backend",
+    "rest",
+    "node",
+    "nodejs",
+    "typescript",
+    "template",
+    "server template",
+    "open template hub"
+  ]
 }
