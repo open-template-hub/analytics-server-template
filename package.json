@@ -1,9 +1,13 @@
 {
   "name": "analytics-server-template",
+  "description": "Analytics Server Template for generic usage in Node.js",
   "version": "2.0.0",
-  "description": "Template Analytics Server",
-  "main": "analytics-server.main.ts",
   "license": "MIT",
+  "main": "analytics-server.main.ts",
+  "scripts": {
+    "start": "ts-node analytics-server.main.ts",
+    "startLocal": "nodemon --exec DEBUG=* ts-node analytics-server.main.ts"
+  },
   "dependencies": {
     "@open-template-hub/common": "^1.0.7",
     "@types/cors": "^2.8.9",
@@ -23,8 +27,9 @@
     "@types/cors": "^2.8.9",
     "nodemon": "^1.19.0"
   },
-  "scripts": {
-    "start": "ts-node analytics-server.main.ts",
-    "startLocal": "nodemon --exec DEBUG=* ts-node analytics-server.main.ts"
+  "git repository": "https://github.com/open-template-hub/analytics-server-template",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/open-template-hub/analytics-server-template.git"
   }
 }
