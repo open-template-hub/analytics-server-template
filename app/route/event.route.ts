@@ -2,7 +2,7 @@
  * @description holds event routes
  */
 
-import { Context, ResponseCode } from '@open-template-hub/common';
+import { ResponseCode } from '@open-template-hub/common';
 import { Request, Response } from 'express';
 import Router from 'express-promise-router';
 import { EventController } from '../controller/event.controller';
@@ -23,7 +23,7 @@ const eventController = new EventController();
 router.post( subRoutes.root, async ( req: Request, res: Response ) => {
   // Create new Event
   let event = await eventController.createEvent(
-      res.locals.ctx as Context,
+      res.locals.ctx,
       {
         name: req.body.name,
         category: EventCategory[ req.body.category as EventCategory ],
@@ -37,7 +37,7 @@ router.post( subRoutes.root, async ( req: Request, res: Response ) => {
 router.get( subRoutes.root, async ( req: Request, res: Response ) => {
   // Filter Events
   let events = await eventController.filterEvents(
-      res.locals.ctx as Context,
+      res.locals.ctx,
       {
         name: req.query.name,
         category: EventCategory[ req.query.category as EventCategory ],
