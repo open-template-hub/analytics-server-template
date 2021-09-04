@@ -2,7 +2,7 @@
   "name": "Analytics Server Template",
   "description": "Analytics Server Template for generic usage in Node.js",
   "repository": "https://github.com/open-template-hub/analytics-server-template",
-  "logo": "https://github.com/open-template-hub/open-template-hub.github.io/blob/master/assets/logo/brand-logo.png?raw=true",
+  "logo": "https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/logo/brand-logo.png",
   "keywords": [
     "analytics",
     "analyze",
