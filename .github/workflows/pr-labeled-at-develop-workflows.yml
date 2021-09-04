@@ -15,7 +15,7 @@ jobs:
       - name: automerge
         uses: "pascalgn/automerge-action@v0.14.3"
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          GITHUB_TOKEN: "${{ secrets.MASTER_BRANCH_ACCESS_TOKEN }}"
           MERGE_LABELS: "workflow"
           MERGE_COMMIT_MESSAGE: "Auto merge for PR with workflow label"
           MERGE_FORKS: "false"
