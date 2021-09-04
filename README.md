@@ -98,4 +98,3 @@ You can find list of available http request in the [requests](assets/requests) d
 ## LICENSE
 
 The source code for this project is released under the [MIT License](LICENSE).
-
