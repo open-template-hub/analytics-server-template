@@ -65,6 +65,8 @@ MONGODB_URI={MongoDB Connection String}
 RESPONSE_ENCRYPTION_SECRET={Response Encryption Secret}
 
 MONGODB_CONNECTION_LIMIT={Connection Limit In Pool}
+
+ORCHESTRATION_SERVER_QUEUE_CHANNEL= {Orchestration Server MQ Channel Name}
 ```
 
 ## Http Requests
