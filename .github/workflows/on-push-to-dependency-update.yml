@@ -1,9 +1,9 @@
-name: On Push to Master Workflows
+name: On Push to Dependency Update Workflows
 
 on:
   push:
     branches:
-      - "master"
+      - "workflow/dependency-update"
 
 jobs:
   continuous-integration:
