@@ -55,18 +55,24 @@ Check project's current **nodejs** and **npm** version from **[package.json](pac
 
 If you don't give **RESPONSE_ENCRYPTION_SECRET**, response encryption mechanism will be disabled automatically.
 
-```applescript
-PORT={Server Port}
+``` applescript
+PORT=4005
+
+PROJECT={Project Name}
+MODULE={Module Name}
+ENVIRONMENT={Environment Name}
+
+MONGODB_URI={Database Connection Url}
+MONGODB_CONNECTION_LIMIT={MongoDB Connection Limit}
+
+CLOUDAMQP_APIKEY={MQ Api Key}
+CLOUDAMQP_URL={MQ Connection Url}
+
+ANALYTICS_SERVER_QUEUE_CHANNEL={Analytics MQ Channel}
+ORCHESTRATION_SERVER_QUEUE_CHANNEL={Orchestration MQ Channel}
 
 ACCESS_TOKEN_SECRET={Access Token Secret}
-
-MONGODB_URI={MongoDB Connection String}
-
 RESPONSE_ENCRYPTION_SECRET={Response Encryption Secret}
-
-MONGODB_CONNECTION_LIMIT={Connection Limit In Pool}
-
-ORCHESTRATION_SERVER_QUEUE_CHANNEL= {Orchestration Server MQ Channel Name}
 ```
 
 ## Http Requests
