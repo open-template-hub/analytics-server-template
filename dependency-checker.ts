@@ -14,7 +14,7 @@ console.log(
     '\n' +
     '\n' +
     '<h1 align="center">\n' +
-    'Open Template Hub - Auth Server Template v2\n' +
+    'Open Template Hub - Analytics Server Template v2\n' +
     '  <br/>\n' +
     '(outdated packages)\n' +
     '</h1>\n' +
