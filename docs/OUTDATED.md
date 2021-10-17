@@ -5,7 +5,7 @@
 </p>
 
 <h1 align="center">
-Open Template Hub - Analytics Server Template v2
+Open Template Hub - Analytics Server Template v3
   <br/>
 (outdated packages)
 </h1>
