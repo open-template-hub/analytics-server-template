@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.9",
-    "nodemon": "^1.19.0"
+    "nodemon": "^2.0.14"
   },
   "git repository": "https://github.com/open-template-hub/analytics-server-template",
   "repository": {
