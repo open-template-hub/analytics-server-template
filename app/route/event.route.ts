@@ -16,7 +16,7 @@ const subRoutes = {
 
 export const router = Router();
 
-export const adminRoutes = [ subRoutes.root ];
+export const adminRoutes = [];
 
 const eventController = new EventController();
 
