@@ -17,10 +17,10 @@ Following packages are not updated in the develop branch yet. So, if you want to
 | --- | --- | --- | --- | --- |
 | @open-template-hub/common   |  2.1.15    | 2.1.15   |  3.0.1   | analytics-server-template |
 | express-promise-router      |   3.0.3    |  3.0.3   |  4.1.0   | analytics-server-template |
-| mongoose                    | 5.13.13  5 | .13.13   | 6.0.12   | analytics-server-template |
+| mongoose                    | 5.13.13  5 | .13.13   | 6.0.13   | analytics-server-template |
 | nodemon                     |  1.19.4    | 1.19.4   | 2.0.15   | analytics-server-template |
 | ts-node                     |  8.10.2    | 8.10.2   | 10.4.0   | analytics-server-template |
-| typescript                  |  3.9.10    | 3.9.10   |  4.4.4   | analytics-server-template |
+| typescript                  |  3.9.10    | 3.9.10   |  4.5.2   | analytics-server-template |
 
 <table align="right"><tr><td><a href="https://opentemplatehub.com"><img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/logo/brand-logo.png" width="50px" alt="oth"/></a></td><td><b>Open Template Hub © 2021</b></td></tr></table>
 
