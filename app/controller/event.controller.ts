@@ -15,22 +15,22 @@ export class EventController {
    * @param event event
    * @returns created event
    */
-  createEvent = async ( context: Context, event: Event ) => {
+  createEvent = async (context: Context, event: Event) => {
     const eventRepository = await new EventRepository().initialize(
-        context.mongodb_provider.getConnection()
+      context.mongodb_provider.getConnection()
     );
 
-    if ( !event.timestamp ) {
+    if (!event.timestamp) {
       event.timestamp = Date.now();
     }
 
-    if ( !event.category ) {
+    if (!event.category) {
       event.category = EventCategory.DEFAULT;
     }
 
     event.reporter = context.username;
 
-    return eventRepository.createEvent( event );
+    return eventRepository.createEvent(event);
   };
 
   /**
@@ -39,14 +39,14 @@ export class EventController {
    * @param filter filter
    * @returns filtered events
    */
-  filterEvents = async ( context: Context, filter: EventFilter ) => {
+  filterEvents = async (context: Context, filter: EventFilter) => {
     const eventRepository = await new EventRepository().initialize(
-        context.mongodb_provider.getConnection()
+      context.mongodb_provider.getConnection()
     );
 
-    const query = this.getQueryFromFilter( filter );
+    const query = this.getQueryFromFilter(context, filter);
 
-    return eventRepository.filterEvents( query, filter.limit );
+    return eventRepository.filterEvents(query, filter.limit);
   };
 
   /**
@@ -54,26 +54,24 @@ export class EventController {
    * @param filter filter
    * @returns query
    */
-  getQueryFromFilter = ( filter: EventFilter ) => {
+  getQueryFromFilter = (context: Context, filter: EventFilter) => {
     var query = {} as any;
 
-    if ( filter.name ) {
+    query.reporter = context.username;
+
+    if (filter.name) {
       query.name = { $eq: filter.name };
     }
 
-    if ( filter.category ) {
+    if (filter.category) {
       query.category = { $eq: filter.category };
     }
 
-    if ( filter.reporter ) {
-      query.reporter = { $eq: filter.reporter };
-    }
-
-    if ( filter.start ) {
+    if (filter.start) {
       query.timestamp = { $gte: filter.start };
     }
 
-    if ( filter.end ) {
+    if (filter.end) {
       query.timestamp = { $lte: filter.end };
     }
 
