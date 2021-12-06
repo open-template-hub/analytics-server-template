@@ -16,6 +16,7 @@ Open Template Hub - Analytics Server Template v3
 [![SonarCloud](https://img.shields.io/sonar/quality_gate/open-template-hub_analytics-server-template?server=https%3A%2F%2Fsonarcloud.io&label=Sonar%20Cloud&style=for-the-badge&logo=sonarcloud)](https://sonarcloud.io/dashboard?id=open-template-hub_analytics-server-template)
 
 Analytics Server Template is a generic open-source analytics server that has a simple yet powerful design to connect your business with third-party analytics service providers (like Google Analytics or Matomo).
+
 ## Ways to Begin
 
 ### 1. Express Deploy
