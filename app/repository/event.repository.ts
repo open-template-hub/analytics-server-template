@@ -39,7 +39,7 @@ export class EventRepository {
    */
   filterEvents = async ( query: any, limit: number ) => {
     try {
-      return await this.dataModel.find( query ).limit( limit );
+      return await this.dataModel.find( query ).sort( { timestamp: -1 } ).limit( limit );
     } catch ( error ) {
       console.error( '> filterEvents error: ', error );
       throw error;
