@@ -43,7 +43,7 @@ router.get( subRoutes.root, async ( req: Request, res: Response ) => {
         category: EventCategory[ req.query.category as EventCategory ],
         start: parseInt( req.query.start as string ),
         end: parseInt( req.query.end as string ),
-        limit: parseInt( req.query.limit as string ),
+        limit: req.query.limit ? parseInt( req.query.limit as string ) : 50,
         reporter: req.query.reporter,
       } as EventFilter
   );
