@@ -26,7 +26,7 @@ const subRoutes = {
 };
 
 export namespace Routes {
-  const errorHandlerUtil = new ErrorHandlerUtil();
+  let errorHandlerUtil: ErrorHandlerUtil;
   const debugLogUtil = new DebugLogUtil();
   var mongodb_provider: MongoDbProvider;
   var message_queue_provider: MessageQueueProvider;
@@ -45,6 +45,7 @@ export namespace Routes {
 
   export const mount = (app: any) => {
     environment = new Environment();
+    errorHandlerUtil = new ErrorHandlerUtil( debugLogUtil, environment.args() );
     mongodb_provider = new MongoDbProvider(environment.args());
     const preloadUtil = new PreloadUtil();
 
