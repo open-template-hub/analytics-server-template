@@ -3,7 +3,7 @@
  */
 
 export enum EventCategory {
-  PURCHASE = 'PURCHASE',
+  PAYMENT = 'PAYMENT',
   DEFAULT = 'DEFAULT',
   LOGIN = 'LOGIN',
   SOCIAL_LOGIN = 'SOCIAL_LOGIN'
