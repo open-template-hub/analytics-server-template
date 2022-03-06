@@ -25,7 +25,7 @@ router.post( subRoutes.root, async ( req: Request, res: Response ) => {
   let event = await eventController.createEvent(
       res.locals.ctx,
       {
-        name: req.body.name,
+        source: req.body.source,
         category: EventCategory[ req.body.category as EventCategory ],
         timestamp: req.body.timestamp,
         payload: req.body.payload,

@@ -5,7 +5,7 @@
 import { EventCategory } from '../enum/event-category.enum';
 
 export interface Event {
-  name: string;
+  source: string;
   timestamp: number;
   payload: any;
   category: EventCategory;

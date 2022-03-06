@@ -13,7 +13,7 @@ export class EventDataModel {
      * Provider schema
      */
     const schema: mongoose.SchemaDefinition = {
-      name: { type: String, required: true },
+      source: { type: String, required: true },
       reporter: { type: String, required: true },
       category: { type: String, required: true },
       timestamp: { type: Number, required: true },
