@@ -10,14 +10,8 @@ import {
 import { NextFunction, Request, Response } from 'express';
 import { Environment } from '../../environment';
 import { AnalyticsQueueConsumer } from '../consumer/analytics-queue.consumer';
-import {
-  adminRoutes as eventAdminRoutes,
-  router as eventRouter,
-} from './event.route';
-import {
-  publicRoutes as monitorPublicRoutes,
-  router as monitorRouter,
-} from './monitor.route';
+import { router as eventRouter } from './event.route';
+import { router as monitorRouter } from './monitor.route';
 
 const subRoutes = {
   root: '/',
@@ -31,8 +25,6 @@ export namespace Routes {
   var mongodb_provider: MongoDbProvider;
   var message_queue_provider: MessageQueueProvider;
   var environment: Environment;
-  var publicRoutes: string[] = [];
-  var adminRoutes: string[] = [];
 
   function populateRoutes(mainRoute: string, routes: Array<string>) {
     var populated = Array<string>();
@@ -45,7 +37,7 @@ export namespace Routes {
 
   export const mount = (app: any) => {
     environment = new Environment();
-    errorHandlerUtil = new ErrorHandlerUtil( debugLogUtil, environment.args() );
+    errorHandlerUtil = new ErrorHandlerUtil(debugLogUtil, environment.args());
     mongodb_provider = new MongoDbProvider(environment.args());
     const preloadUtil = new PreloadUtil();
 
@@ -66,12 +58,6 @@ export namespace Routes {
     preloadUtil
       .preload(mongodb_provider)
       .then(() => console.log('DB preload is completed.'));
-
-    publicRoutes = [...populateRoutes(subRoutes.monitor, monitorPublicRoutes)];
-    console.log('Public Routes: ', publicRoutes);
-
-    adminRoutes = [...populateRoutes(subRoutes.event, eventAdminRoutes)];
-    console.log('Admin Routes: ', adminRoutes);
 
     const responseInterceptor = (
       req: Request,
@@ -101,8 +87,6 @@ export namespace Routes {
         res.locals.ctx = await context(
           req,
           environment.args(),
-          publicRoutes,
-          adminRoutes,
           mongodb_provider,
           undefined,
           message_queue_provider
