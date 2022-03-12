@@ -21,7 +21,14 @@ export namespace Routes {
   export const mount = (app: any) => {
     const envArgs = new Environment().args();
 
-    const ctxArgs = { envArgs } as ContextArgs;
+    const ctxArgs = {
+      envArgs,
+      providerAvailability: {
+        mongo_enabled: true,
+        postgre_enabled: false,
+        mq_enabled: true,
+      },
+    } as ContextArgs;
 
     const assets = {
       mqChannelTag: envArgs.mqArgs
