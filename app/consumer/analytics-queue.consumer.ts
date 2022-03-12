@@ -1,6 +1,10 @@
-import { AnalyticsActionType, ContextArgs } from '@open-template-hub/common';
+import {
+  AnalyticsActionType,
+  ContextArgs,
+  QueueConsumer,
+} from '@open-template-hub/common';
 
-export class AnalyticsQueueConsumer {
+export class AnalyticsQueueConsumer implements QueueConsumer {
   private channel: any;
   private ctxArgs: ContextArgs = {} as ContextArgs;
 
