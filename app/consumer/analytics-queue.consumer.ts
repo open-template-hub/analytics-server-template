@@ -1,7 +1,20 @@
-import { AnalyticsActionType } from '@open-template-hub/common';
+import {
+  AnalyticsActionType,
+  ContextArgs,
+  QueueConsumer,
+} from '@open-template-hub/common';
 
-export class AnalyticsQueueConsumer {
-  constructor(private channel: any) {}
+export class AnalyticsQueueConsumer implements QueueConsumer {
+  private channel: any;
+  private ctxArgs: ContextArgs = {} as ContextArgs;
+
+  constructor() {}
+
+  init = (channel: string, ctxArgs: ContextArgs) => {
+    this.channel = channel;
+    this.ctxArgs = ctxArgs;
+    return this;
+  };
 
   onMessage = async (msg: any) => {
     if (msg !== null) {
