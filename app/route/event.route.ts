@@ -16,6 +16,7 @@ import { Event } from '../interface/event.interface';
 
 const subRoutes = {
   root: '/',
+  categories: '/config'
 };
 
 export const router = Router();
@@ -47,9 +48,21 @@ router.get(
       category: EventCategory[req.query.category as EventCategory],
       start: parseInt(req.query.start as string),
       end: parseInt(req.query.end as string),
+      skip: req.query.skip ? +req.query.skip : 0,
       limit: req.query.limit ? parseInt(req.query.limit as string) : 50,
       reporter: req.query.reporter,
     } as EventFilter);
     res.status(ResponseCode.OK).json(events);
+  }
+);
+
+router.get(
+  subRoutes.categories,
+  authorizedBy([UserRole.ADMIN, UserRole.DEFAULT]),
+  async(req: Request, res: Response) => {
+    let categoryConfig = await eventController.getCategoryConfig(
+      res.locals.ctx
+    )
+    res.status(ResponseCode.OK).json(categoryConfig);
   }
 );

@@ -7,6 +7,7 @@ import { EventCategory } from '../enum/event-category.enum';
 import { EventFilter } from '../interface/event-filter.interface';
 import { Event } from '../interface/event.interface';
 import { EventRepository } from '../repository/event.repository';
+import { EventConfigRepository } from '../repository/eventConfig.repository';
 
 export class EventController {
   /**
@@ -46,7 +47,7 @@ export class EventController {
 
     const query = this.getQueryFromFilter(context, filter);
 
-    return eventRepository.filterEvents(query, filter.limit);
+    return eventRepository.filterEvents(query, filter.skip, filter.limit);
   };
 
   /**
@@ -63,7 +64,7 @@ export class EventController {
       query.name = { $eq: filter.name };
     }
 
-    if (filter.category) {
+    if (filter.category && filter.category !== EventCategory.ALL) {
       query.category = { $eq: filter.category };
     }
 
@@ -77,4 +78,12 @@ export class EventController {
 
     return query;
   };
+
+  getCategoryConfig = async (context: Context) => {
+    const eventConfigRepository = await new EventConfigRepository().initialize(
+      context.mongodb_provider.getConnection()
+    );
+
+    return await eventConfigRepository.getConfig( "DEFAULT_USER" ); // todo set 
+  }
 }

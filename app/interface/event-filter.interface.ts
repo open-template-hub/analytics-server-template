@@ -9,6 +9,7 @@ export interface EventFilter {
   category: EventCategory;
   start: number;
   end: number;
+  skip: number;
   limit: number;
   reporter: string;
 }
