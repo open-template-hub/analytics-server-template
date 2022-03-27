@@ -39,9 +39,6 @@ export class EventRepository {
    */
   filterEvents = async ( query: any, skip: number, limit: number ) => {
     try {
-      /*return await this.dataModel.find( query ).sort( { timestamp: -1 } )
-      .skip(skip).limit( limit );*/
-
       let queryResult = await this.dataModel.aggregate([
         { $match: query },
         { $sort: { timestamp: -1 } },

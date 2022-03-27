@@ -14,8 +14,8 @@
       */
      const schema: mongoose.SchemaDefinition = {
        key: { type: String, required: true },
-       categories: { type: Array, default: [] },
-       limit: { type: Number, required: true }
+       roles: { type: Array, default: [] },
+       messages: { type: Number, default: [] }
      };
      this.dataSchema = new mongoose.Schema( schema );
    }

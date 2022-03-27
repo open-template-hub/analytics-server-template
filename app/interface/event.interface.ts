@@ -8,6 +8,6 @@ export interface Event {
   source: string;
   timestamp: number;
   payload: any;
-  category: EventCategory;
+  category: string;
   reporter: string;
 }

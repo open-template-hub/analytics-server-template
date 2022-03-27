@@ -3,13 +3,15 @@
  */
 
 import { Context } from '@open-template-hub/common';
-import { EventCategory } from '../enum/event-category.enum';
 import { EventFilter } from '../interface/event-filter.interface';
 import { Event } from '../interface/event.interface';
 import { EventRepository } from '../repository/event.repository';
-import { EventConfigRepository } from '../repository/eventConfig.repository';
+import { EventConfigRepository } from '../repository/event-config.repository';
+import { Environment } from '../../environment';
 
 export class EventController {
+  defaultMaxQueryLimit = "1000";
+
   /**
    * creates event
    * @param context context
@@ -26,7 +28,7 @@ export class EventController {
     }
 
     if (!event.category) {
-      event.category = EventCategory.DEFAULT;
+      event.category = "DEFAULT";
     }
 
     event.reporter = context.username;
@@ -64,7 +66,7 @@ export class EventController {
       query.name = { $eq: filter.name };
     }
 
-    if (filter.category && filter.category !== EventCategory.ALL) {
+    if (filter.category && filter.category !== "ALL") {
       query.category = { $eq: filter.category };
     }
 
@@ -76,14 +78,21 @@ export class EventController {
       query.timestamp = { $lte: filter.end };
     }
 
+    const maxQueryLimit = +(new Environment().args().serverSpecificArgs?.maxQueryLimit ?? "1000");
+    if (filter.limit > maxQueryLimit) {
+      filter.limit = maxQueryLimit
+    }
+
     return query;
   };
 
-  getCategoryConfig = async (context: Context) => {
+  getCategories = async (context: Context, language: string) => {
     const eventConfigRepository = await new EventConfigRepository().initialize(
       context.mongodb_provider.getConnection()
     );
 
-    return await eventConfigRepository.getConfig( "DEFAULT_USER" ); // todo set 
+    const defaultLanguage = process.env.DEFAULT_LANGUAGE ?? "en";
+
+    return eventConfigRepository.getCategories( context.role, language, defaultLanguage );
   }
 }

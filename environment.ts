@@ -20,7 +20,11 @@ export class Environment {
         process.env.ORCHESTRATION_SERVER_QUEUE_CHANNEL,
     } as MqArgs;
 
-    this._args = { tokenArgs, dbArgs, mqArgs } as EnvArgs;
+    var serverSpecificArgs = {
+      maxQueryLimit: process.env.MAX_QUERY_LIMIT
+    } as any;
+
+    this._args = { tokenArgs, dbArgs, mqArgs, serverSpecificArgs } as EnvArgs;
   }
 
   args = () => {

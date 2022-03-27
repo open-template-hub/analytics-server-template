@@ -22,6 +22,8 @@ if [ ! -f .env ]; then
     echo "ACCESS_TOKEN_SECRET={Access Token Secret}"
     echo "RESPONSE_ENCRYPTION_SECRET={Response Encryption Secret}"
 
+    echo "MAX_QUERY_LIMIT=100"
+
   } >>.env
 else
   echo ".env file already exists. Nothing to do..."
