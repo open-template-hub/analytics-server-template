@@ -20,13 +20,12 @@ const subRoutes = {
 
 export const router = Router();
 
-const eventController = new EventController();
-
 router.post(
   subRoutes.root,
   authorizedBy([UserRole.ADMIN, UserRole.DEFAULT]),
   async (req: Request, res: Response) => {
     // Create new Event
+    const eventController = new EventController();
     let event = await eventController.createEvent(res.locals.ctx, {
       source: req.body.source,
       category: req.body.category,
@@ -42,6 +41,7 @@ router.get(
   authorizedBy([UserRole.ADMIN, UserRole.DEFAULT]),
   async (req: Request, res: Response) => {
     // Filter Events
+    const eventController = new EventController();
     let events = await eventController.filterEvents(res.locals.ctx, {
       name: req.query.name,
       category: req.query.category,
@@ -59,6 +59,7 @@ router.get(
   subRoutes.categories,
   authorizedBy([UserRole.ADMIN, UserRole.DEFAULT]),
   async(req: Request, res: Response) => {
+    const eventController = new EventController();
     let categoriesResponse = await eventController.getCategories(
       res.locals.ctx,
       req.query.language as string

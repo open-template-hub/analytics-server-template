@@ -3,14 +3,17 @@
  */
 
 import { Context } from '@open-template-hub/common';
+import { Environment } from '../../environment';
 import { EventFilter } from '../interface/event-filter.interface';
 import { Event } from '../interface/event.interface';
-import { EventRepository } from '../repository/event.repository';
 import { EventConfigRepository } from '../repository/event-config.repository';
-import { Environment } from '../../environment';
+import { EventRepository } from '../repository/event.repository';
 
 export class EventController {
-  defaultMaxQueryLimit = "1000";
+
+  constructor( private environment = new Environment() ) {
+    // Intentionally blank
+  }
 
   /**
    * creates event
@@ -18,22 +21,22 @@ export class EventController {
    * @param event event
    * @returns created event
    */
-  createEvent = async (context: Context, event: Event) => {
+  createEvent = async ( context: Context, event: Event ) => {
     const eventRepository = await new EventRepository().initialize(
-      context.mongodb_provider.getConnection()
+        context.mongodb_provider.getConnection()
     );
 
-    if (!event.timestamp) {
+    if ( !event.timestamp ) {
       event.timestamp = Date.now();
     }
 
-    if (!event.category) {
-      event.category = "DEFAULT";
+    if ( !event.category ) {
+      event.category = 'DEFAULT';
     }
 
     event.reporter = context.username;
 
-    return eventRepository.createEvent(event);
+    return eventRepository.createEvent( event );
   };
 
   /**
@@ -42,57 +45,58 @@ export class EventController {
    * @param filter filter
    * @returns filtered events
    */
-  filterEvents = async (context: Context, filter: EventFilter) => {
+  filterEvents = async ( context: Context, filter: EventFilter ) => {
     const eventRepository = await new EventRepository().initialize(
-      context.mongodb_provider.getConnection()
+        context.mongodb_provider.getConnection()
     );
 
-    const query = this.getQueryFromFilter(context, filter);
+    const query = this.getQueryFromFilter( context, filter );
 
-    return eventRepository.filterEvents(query, filter.skip, filter.limit);
+    return eventRepository.filterEvents( query, filter.skip, filter.limit );
   };
 
   /**
    * creates query from the filter
+   *@param context context
    * @param filter filter
    * @returns query
    */
-  getQueryFromFilter = (context: Context, filter: EventFilter) => {
-    var query = {} as any;
+  getQueryFromFilter = ( context: Context, filter: EventFilter ) => {
+    let query = {} as any;
 
     query.reporter = context.username;
 
-    if (filter.name) {
+    if ( filter.name ) {
       query.name = { $eq: filter.name };
     }
 
-    if (filter.category && filter.category !== "ALL") {
+    if ( filter.category && filter.category !== 'ALL' ) {
       query.category = { $eq: filter.category };
     }
 
-    if (filter.start) {
+    if ( filter.start ) {
       query.timestamp = { $gte: filter.start };
     }
 
-    if (filter.end) {
+    if ( filter.end ) {
       query.timestamp = { $lte: filter.end };
     }
 
-    const maxQueryLimit = +(new Environment().args().serverSpecificArgs?.maxQueryLimit ?? "1000");
-    if (filter.limit > maxQueryLimit) {
-      filter.limit = maxQueryLimit
+    const maxQueryLimit = +( this.environment.args().serverSpecificArgs?.maxQueryLimit ?? '1000' );
+    if ( filter.limit > maxQueryLimit ) {
+      filter.limit = maxQueryLimit;
     }
 
     return query;
   };
 
-  getCategories = async (context: Context, language: string) => {
+  getCategories = async ( context: Context, language: string ) => {
     const eventConfigRepository = await new EventConfigRepository().initialize(
-      context.mongodb_provider.getConnection()
+        context.mongodb_provider.getConnection()
     );
 
-    const defaultLanguage = process.env.DEFAULT_LANGUAGE ?? "en";
+    const defaultLanguage = process.env.DEFAULT_LANGUAGE ?? 'en';
 
     return eventConfigRepository.getCategories( context.role, language, defaultLanguage );
-  }
+  };
 }
