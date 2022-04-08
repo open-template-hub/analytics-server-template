@@ -5,7 +5,7 @@
 </p>
 
 <h1 align="center">
-Open Template Hub - Analytics Server Template v3
+Open Template Hub - Analytics Server Template v4
 </h1>
 
 [![License](https://img.shields.io/github/license/open-template-hub/analytics-server-template?color=43b043&style=for-the-badge)](LICENSE)
@@ -73,6 +73,12 @@ ORCHESTRATION_SERVER_QUEUE_CHANNEL={Orchestration MQ Channel}
 ACCESS_TOKEN_SECRET={Access Token Secret}
 RESPONSE_ENCRYPTION_SECRET={Response Encryption Secret}
 ```
+
+## Postman Regression Tests
+
+To be able to configure regression tests, refer to **[REGRESSION_TESTS.md](docs/REGRESSION_TESTS.md)** file.
+
+<br/>
 
 ## Http Requests
 
