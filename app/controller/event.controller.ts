@@ -74,12 +74,16 @@ export class EventController {
       query.category = { $eq: filter.category };
     }
 
-    if ( filter.start ) {
-      query.timestamp = { $gte: filter.start };
-    }
+    if(filter.start || filter.end) {
+      query.timestamp = { }
 
-    if ( filter.end ) {
-      query.timestamp = { $lte: filter.end };
+      if (filter.start) {
+        query.timestamp.$gte = filter.start;
+      }
+  
+      if (filter.end) {
+        query.timestamp.$lte = filter.end
+      }
     }
 
     const maxQueryLimit = +( this.environment.args().serverSpecificArgs?.maxQueryLimit ?? '1000' );
