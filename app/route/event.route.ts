@@ -15,7 +15,8 @@ import { Event } from '../interface/event.interface';
 
 const subRoutes = {
   root: '/',
-  categories: '/categories'
+  categories: '/categories',
+  all: '/all'
 };
 
 export const router = Router();
@@ -65,5 +66,41 @@ router.get(
       req.query.language as string
     )
     res.status(ResponseCode.OK).json(categoriesResponse);
+  }
+);
+
+router.get(
+  subRoutes.all,
+  authorizedBy([UserRole.ADMIN]),
+  async(req: Request, res: Response) => {
+    const eventController = new EventController();
+    let events = await eventController.getAllEvents(res.locals.ctx, {
+      name: req.query.name,
+      category: req.query.category,
+      start: parseInt(req.query.start as string),
+      end: parseInt(req.query.end as string),
+      skip: req.query.skip ? +req.query.skip : 0,
+      limit: req.query.limit ? parseInt(req.query.limit as string) : 20,
+      reporter: req.query.reporter,
+    } as EventFilter);
+    res.status(ResponseCode.OK).json(events);
+  }
+)
+
+router.get(
+  subRoutes.root,
+  authorizedBy([UserRole.ADMIN]),
+  async (req: Request, res: Response) => {
+    // Filter Events
+    const eventController = new EventController();
+    let events = await eventController.filterEvents(res.locals.ctx, {
+      category: req.query.category,
+      start: parseInt(req.query.start as string),
+      end: parseInt(req.query.end as string),
+      skip: req.query.skip ? +req.query.skip : 0,
+      limit: req.query.limit ? parseInt(req.query.limit as string) : 50,
+      reporter: req.query.reporter,
+    } as EventFilter);
+    res.status(ResponseCode.OK).json(events);
   }
 );
