@@ -50,10 +50,10 @@ export class EventController {
         context.mongodb_provider.getConnection()
     );
 
-    filter.reporter = context.username;
-
     const query = this.getQueryFromFilter( filter );
 
+    query.reporter = { $eq: context.username }
+    
     return eventRepository.filterEvents( query, filter.skip, filter.limit );
   };
 
@@ -65,12 +65,6 @@ export class EventController {
    */
   getQueryFromFilter = ( filter: EventFilter ) => {
     let query = {} as any;
-
-    if(filter.reporter) {
-      query.$or = [
-        {reporter: {$regex : `^${filter.reporter}`, $options: 'i' } }, 
-      ]
-    }
 
     if ( filter.name ) {
       query.name = { $eq: filter.name };
@@ -116,6 +110,10 @@ export class EventController {
     );
 
     const query = this.getQueryFromFilter( filter );
+
+    query.$or = [
+      {reporter: {$regex : `^${filter.reporter}`, $options: 'i' } }
+    ]
 
     return eventRepository.filterEvents( query, filter.skip, filter.limit ); 
   }
