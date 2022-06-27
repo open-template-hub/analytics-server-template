@@ -11,8 +11,10 @@ import { EventRepository } from '../repository/event.repository';
 
 export class EventController {
 
-  constructor( private environment = new Environment() ) {
-    // Intentionally blank
+  environment;
+
+  constructor() {
+    this.environment = new Environment();
   }
 
   /**
@@ -50,7 +52,9 @@ export class EventController {
         context.mongodb_provider.getConnection()
     );
 
-    const query = this.getQueryFromFilter( context, filter );
+    const query = this.getQueryFromFilter( filter );
+
+    query.reporter = { $eq: context.username };
 
     return eventRepository.filterEvents( query, filter.skip, filter.limit );
   };
@@ -61,10 +65,8 @@ export class EventController {
    * @param filter filter
    * @returns query
    */
-  getQueryFromFilter = ( context: Context, filter: EventFilter ) => {
+  getQueryFromFilter = ( filter: EventFilter ) => {
     let query = {} as any;
-
-    query.reporter = context.username;
 
     if ( filter.name ) {
       query.name = { $eq: filter.name };
@@ -74,15 +76,15 @@ export class EventController {
       query.category = { $eq: filter.category };
     }
 
-    if(filter.start || filter.end) {
-      query.timestamp = { }
+    if ( filter.start || filter.end ) {
+      query.timestamp = {};
 
-      if (filter.start) {
+      if ( filter.start ) {
         query.timestamp.$gte = filter.start;
       }
-  
-      if (filter.end) {
-        query.timestamp.$lte = filter.end
+
+      if ( filter.end ) {
+        query.timestamp.$lte = filter.end;
       }
     }
 
@@ -102,5 +104,21 @@ export class EventController {
     const defaultLanguage = process.env.DEFAULT_LANGUAGE ?? 'en';
 
     return eventConfigRepository.getCategories( context.role, language, defaultLanguage );
+  };
+
+  getAllEvents = async ( context: Context, filter: EventFilter ) => {
+    const eventRepository = await new EventRepository().initialize(
+        context.mongodb_provider.getConnection()
+    );
+
+    const query = this.getQueryFromFilter( filter );
+
+    if ( filter.reporter ) {
+      query.$or = [
+        { reporter: { $regex: `^${ filter.reporter }`, $options: 'i' } }
+      ];
+    }
+
+    return eventRepository.filterEvents( query, filter.skip, filter.limit );
   };
 }

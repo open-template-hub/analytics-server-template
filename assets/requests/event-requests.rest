@@ -11,7 +11,7 @@ Authorization: Bearer token
   }
 }
 
-### Get All Events
+### Get Events
 GET http://localhost:4005/event
 Authorization: Bearer token
 
@@ -20,4 +20,8 @@ GET http://localhost:4005/event?name=test&start=1557003600000&end=1557003600000&
 
 ### Get Event Configs
 GET http://localhost:4005/event/categories
+Authorization: Bearer token
+
+### Get All Events (ADMIN)
+GET http://localhost:4005/event/all
 Authorization: Bearer token
