@@ -10,7 +10,7 @@ let indexOfDependedBy = -1;
 console.log(
     '<p align="center">\n' +
     '  <a href="https://opentemplatehub.com">\n' +
-    '    <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/logo/server/analytics-server-logo.png" alt="Logo" width=200>\n\n' +
+    '    <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/logo/server/analytics-server-logo.png" alt="Logo" width=200>\n' +
     '  </a>\n' +
     '</p>\n' +
     '\n' +
