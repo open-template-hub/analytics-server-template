@@ -8,8 +8,6 @@ export class AnalyticsQueueConsumer implements QueueConsumer {
   private channel: any;
   private ctxArgs: ContextArgs = {} as ContextArgs;
 
-  constructor() {}
-
   init = (channel: string, ctxArgs: ContextArgs) => {
     this.channel = channel;
     this.ctxArgs = ctxArgs;
@@ -27,7 +25,7 @@ export class AnalyticsQueueConsumer implements QueueConsumer {
       let requeue = false;
 
       if (message.example) {
-        var exampleHook = async () => {
+        const exampleHook = async () => {
           console.log('Analytics server example');
         };
 

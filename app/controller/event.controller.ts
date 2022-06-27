@@ -11,8 +11,10 @@ import { EventRepository } from '../repository/event.repository';
 
 export class EventController {
 
-  constructor( private environment = new Environment() ) {
-    // Intentionally blank
+  environment;
+
+  constructor() {
+    this.environment = new Environment();
   }
 
   /**
@@ -52,8 +54,8 @@ export class EventController {
 
     const query = this.getQueryFromFilter( filter );
 
-    query.reporter = { $eq: context.username }
-    
+    query.reporter = { $eq: context.username };
+
     return eventRepository.filterEvents( query, filter.skip, filter.limit );
   };
 
@@ -74,15 +76,15 @@ export class EventController {
       query.category = { $eq: filter.category };
     }
 
-    if(filter.start || filter.end) {
-      query.timestamp = { }
+    if ( filter.start || filter.end ) {
+      query.timestamp = {};
 
-      if (filter.start) {
+      if ( filter.start ) {
         query.timestamp.$gte = filter.start;
       }
-  
-      if (filter.end) {
-        query.timestamp.$lte = filter.end
+
+      if ( filter.end ) {
+        query.timestamp.$lte = filter.end;
       }
     }
 
@@ -104,19 +106,19 @@ export class EventController {
     return eventConfigRepository.getCategories( context.role, language, defaultLanguage );
   };
 
-  getAllEvents = async(context: Context, filter: EventFilter) => {
+  getAllEvents = async ( context: Context, filter: EventFilter ) => {
     const eventRepository = await new EventRepository().initialize(
-      context.mongodb_provider.getConnection()
+        context.mongodb_provider.getConnection()
     );
 
     const query = this.getQueryFromFilter( filter );
 
-    if(filter.reporter) {
+    if ( filter.reporter ) {
       query.$or = [
-        {reporter: {$regex : `^${filter.reporter}`, $options: 'i' } }
-      ]
+        { reporter: { $regex: `^${ filter.reporter }`, $options: 'i' } }
+      ];
     }
 
-    return eventRepository.filterEvents( query, filter.skip, filter.limit ); 
-  }
+    return eventRepository.filterEvents( query, filter.skip, filter.limit );
+  };
 }
