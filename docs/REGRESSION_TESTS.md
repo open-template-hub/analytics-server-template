@@ -15,8 +15,6 @@ Open Template Hub - Analytics Server Template v4
 
 Please check [README.md](../README.md) to get more information to configure environment
 
-* RESPONSE_ENCRYPTION_SECRET must be disabled on environment variables
-
 ## Configuration
 
 * Import **analytics-server-regression.postman_environment.json** as environment to Postman
