@@ -13,15 +13,6 @@ export class EventConfigRepository {
     return this;
   };
 
-  getCategory = async ( key: string ) => {
-    try {
-      return await this.dataModel.findOne( key );
-    } catch ( error ) {
-      console.error( '> getCategory error: ', error );
-      throw error;
-    }
-  };
-
   getCategories = async ( userRole: UserRole, language: string, defaultLanguage: string ) => {
     try {
       let dataModel = await this.dataModel.aggregate( [
