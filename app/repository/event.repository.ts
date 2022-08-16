@@ -41,7 +41,7 @@ export class EventRepository {
     try {
       let queryResult = await this.dataModel.aggregate([
         { $match: query },
-        { $sort: { timestamp: -1 } },
+        { $sort: { timestamp: -1 } },
         { $facet: {
           data: [
             { $match: { } },
@@ -50,7 +50,7 @@ export class EventRepository {
           ],
           meta: [
             { $count: "count" },
-            { $addFields: {
+            { $addFields: {
               skip: skip,
               limit: limit
             }}
@@ -66,7 +66,7 @@ export class EventRepository {
         }
 
         return queryResult
-      } 
+      }
       return { }
     } catch ( error ) {
       console.error( '> filterEvents error: ', error );

@@ -13,11 +13,29 @@ export class SystemInfoRepository {
     return this;
   };
 
-  getNpmDownloads = async ( key: any ) => {
+  getSystemInfo = async ( key: any ) => {
     try {
       return await this.dataModel.findOne( { key } );
     } catch ( error ) {
-      console.error( '> getNpmDownloads error: ', error );
+      console.error( '> getSystemInfo error: ', error );
+      throw error;
+    }
+  };
+
+  updateSystemInfo = async ( key: any, value: any ) => {
+    try {
+      return await this.dataModel.findOneAndUpdate( { key }, { value } );
+    } catch ( error ) {
+      console.error( '> updateSystemInfo error: ', error );
+      throw error;
+    }
+  };
+
+  incrementSystemInfo = async ( key: any, incrementBy: any ) => {
+    try {
+      return await this.dataModel.findOneAndUpdate( { key }, { $inc: { value: incrementBy } } );
+    } catch ( error ) {
+      console.error( '> incrementSystemInfo error: ', error );
       throw error;
     }
   };
