@@ -2,7 +2,7 @@ name: Cron System Info Updater Workflow
 
 on:
   schedule:
-    - cron: '* * * * *'
+    - cron: '*/5 * * * *'
 
 jobs:
   cron-system-info-updater:
