@@ -8,8 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run System Info Updater Endpoint
-        env:
-          ADMIN_AUTH_TOKEN: ${{ secrets.ADMIN_AUTH_TOKEN }}
         run: |
-          curl -H "Origin: https://opentemplatehub.com" -H "Authorization: Bearer $ADMIN_AUTH_TOKEN" https://oth-server-orchestra-live.herokuapp.com/analytics/system-info/update?key=npm-downloads
+          curl -H "Origin: https://opentemplatehub.com" -H "Authorization: Bearer ${{ secrets.ADMIN_AUTH_TOKEN }}" https://oth-server-orchestra-live.herokuapp.com/analytics/system-info/update?key=npm-downloads
           
