@@ -2,7 +2,7 @@ name: Cron System Info Updater Workflow
 
 on:
   schedule:
-    - cron: '*/6 * * * *'
+    - cron: '0 5 * * *'
 
 jobs:
   cron-system-info-updater:
@@ -12,4 +12,3 @@ jobs:
       - name: Run System Info Updater Endpoint
         run: |
           curl -H "Origin: https://opentemplatehub.com" -H "Authorization: Bearer ${{ secrets.ADMIN_AUTH_TOKEN }}" https://oth-server-orchestra-live.herokuapp.com/analytics/system-info/update?key=npm-downloads
-          
