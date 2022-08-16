@@ -1,6 +1,8 @@
 name: Cron System Info Updater Workflow
 
-on: push
+on:
+  schedule:
+    - cron: '*/6 * * * *'
 
 jobs:
   cron-system-info-updater:
