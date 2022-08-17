@@ -35,18 +35,10 @@ export class SystemInfoController {
   };
 
   getNpmPackagesDownloadCount = async () => {
-    const today = new Date();
-
-    const twoDaysAgo = new Date();
-    twoDaysAgo.setDate( today.getDate() - 2 );
-
-    const threeDaysAgo = new Date();
-    threeDaysAgo.setDate( today.getDate() - 3 );
-
     let count = 0;
 
     for ( const npmPackage of this.NPM_PACKAGES ) {
-      const url = `https://api.npmjs.org/downloads/point/${ this.formatDate( threeDaysAgo ) }:${ this.formatDate( twoDaysAgo ) }/@open-template-hub/${ npmPackage }`;
+      const url = `https://api.npmjs.org/downloads/point/last-day/@open-template-hub/${ npmPackage }`;
       console.info( url );
 
       const response = await axios.get<any>( url );
@@ -54,22 +46,6 @@ export class SystemInfoController {
     }
 
     return count;
-  };
-
-  formatDate = ( date: Date ) => {
-    const year = date.getFullYear();
-    let month = '' + ( date.getMonth() + 1 );
-    let day = '' + date.getDate();
-
-    if ( month.length < 2 ) {
-      month = '0' + month;
-    }
-
-    if ( day.length < 2 ) {
-      day = '0' + day;
-    }
-
-    return [ year, month, day ].join( '-' );
   };
 
   NPM_PACKAGES: string[] = [
