@@ -36,8 +36,8 @@ export class EventConfigRepository {
         }
       ] );
 
-      let newMessagesArray: string[] = [];
       for ( const element of dataModel ) {
+        let newMessagesArray: string[] = [];
         if ( element.messages?.length > 1 ) {
           for ( let message of element.messages ) {
             if ( message.language === language ) {
