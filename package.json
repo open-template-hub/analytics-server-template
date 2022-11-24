@@ -1,7 +1,7 @@
 {
   "name": "analytics-server-template",
   "description": "Analytics Server Template is a generic open-source analytics server that has a simple yet powerful design to connect your business with third-party analytics service providers (like Google Analytics or Matomo).",
-  "version": "4.1.4",
+  "version": "4.1.5",
   "license": "MIT",
   "main": "analytics-server.main.ts",
   "scripts": {
