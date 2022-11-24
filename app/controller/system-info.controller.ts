@@ -49,6 +49,6 @@ export class SystemInfoController {
   };
 
   NPM_PACKAGES: string[] = [
-    'server-generator', 'app-generator', 'animated-code-editor', 'led', 'card', 'button', 'hero', 'ui-library-template', 'common'
+    'server-generator', 'app-generator', 'animated-code-editor', 'led', 'card', 'button', 'hero', 'ui-library-template', 'swagger-decorators', 'common'
   ];
 }
