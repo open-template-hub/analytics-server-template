@@ -1,11 +1,4 @@
-import {
-  ContextArgs,
-  MountArgs,
-  MountAssets,
-  Route,
-  RouteArgs,
-  mount as mountApp,
-} from '@open-template-hub/common';
+import { ContextArgs, mount as mountApp, MountArgs, MountAssets, Route, RouteArgs, } from '@open-template-hub/common';
 import { Environment } from '../../environment';
 import { AnalyticsQueueConsumer } from '../consumer/analytics-queue.consumer';
 import { router as eventRouter } from './event.route';
