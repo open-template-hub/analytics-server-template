@@ -10,7 +10,7 @@
     "outdated": "node dependency-checker.ts > docs/OUTDATED.md"
   },
   "dependencies": {
-    "@open-template-hub/common": "^4.0.14",
+    "@open-template-hub/common": "^4.1.0",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/mongoose": "^5.11.97",
