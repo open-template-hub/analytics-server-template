@@ -39,35 +39,39 @@ export class EventRepository {
    */
   filterEvents = async ( query: any, skip: number, limit: number ) => {
     try {
-      let queryResult = await this.dataModel.aggregate([
+      let queryResult = await this.dataModel.aggregate( [
         { $match: query },
         { $sort: { timestamp: -1 } },
-        { $facet: {
-          data: [
-            { $match: { } },
-            { $skip: skip },
-            { $limit: limit }
-          ],
-          meta: [
-            { $count: "count" },
-            { $addFields: {
-              skip: skip,
-              limit: limit
-            }}
-          ]
-        }}
-      ]);
+        {
+          $facet: {
+            data: [
+              { $match: {} },
+              { $skip: skip },
+              { $limit: limit }
+            ],
+            meta: [
+              { $count: 'count' },
+              {
+                $addFields: {
+                  skip: skip,
+                  limit: limit
+                }
+              }
+            ]
+          }
+        }
+      ] );
 
-      if( queryResult.length > 0 ) {
-        queryResult = queryResult[0];
+      if ( queryResult.length > 0 ) {
+        queryResult = queryResult[ 0 ];
 
-        if( queryResult.meta.length > 0 ) {
-          queryResult.meta = queryResult.meta[0]
+        if ( queryResult.meta.length > 0 ) {
+          queryResult.meta = queryResult.meta[ 0 ];
         }
 
-        return queryResult
+        return queryResult;
       }
-      return { }
+      return {};
     } catch ( error ) {
       console.error( '> filterEvents error: ', error );
       throw error;

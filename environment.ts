@@ -1,7 +1,7 @@
 import { DbArgs, EnvArgs, MqArgs, TokenArgs } from '@open-template-hub/common';
 
 export class Environment {
-  constructor(private _args: EnvArgs = {} as EnvArgs) {
+  constructor( private _args: EnvArgs = {} as EnvArgs ) {
     const tokenArgs = {
       accessTokenSecret: process.env.ACCESS_TOKEN_SECRET,
       responseEncryptionSecret: process.env.RESPONSE_ENCRYPTION_SECRET,
@@ -15,9 +15,9 @@ export class Environment {
     const mqArgs = {
       messageQueueConnectionUrl: process.env.CLOUDAMQP_URL,
       analyticsServerMessageQueueChannel:
-        process.env.ANALYTICS_SERVER_QUEUE_CHANNEL,
+      process.env.ANALYTICS_SERVER_QUEUE_CHANNEL,
       orchestrationServerMessageQueueChannel:
-        process.env.ORCHESTRATION_SERVER_QUEUE_CHANNEL,
+      process.env.ORCHESTRATION_SERVER_QUEUE_CHANNEL,
     } as MqArgs;
 
     const serverSpecificArgs = {

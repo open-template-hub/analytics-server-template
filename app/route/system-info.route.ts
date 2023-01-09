@@ -2,10 +2,7 @@
  * @description holds system info routes
  */
 
-import {
-  authorizedBy,
-  ResponseCode, UserRole,
-} from '@open-template-hub/common';
+import { authorizedBy, ResponseCode, UserRole, } from '@open-template-hub/common';
 import { Request, Response } from 'express';
 import Router from 'express-promise-router';
 import { SystemInfoController } from '../controller/system-info.controller';

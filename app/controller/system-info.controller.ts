@@ -3,13 +3,16 @@
  */
 
 import { Context } from '@open-template-hub/common';
+import axios from 'axios';
 import { Environment } from '../../environment';
 import { SystemInfoRepository } from '../repository/system-info.repository';
-import axios from 'axios';
 
 export class SystemInfoController {
 
   environment;
+  NPM_PACKAGES: string[] = [
+    'server-generator', 'app-generator', 'animated-code-editor', 'led', 'card', 'button', 'hero', 'ui-library-template', 'swagger-decorators', 'common'
+  ];
 
   constructor() {
     this.environment = new Environment();
@@ -47,8 +50,4 @@ export class SystemInfoController {
 
     return count;
   };
-
-  NPM_PACKAGES: string[] = [
-    'server-generator', 'app-generator', 'animated-code-editor', 'led', 'card', 'button', 'hero', 'ui-library-template', 'swagger-decorators', 'common'
-  ];
 }
