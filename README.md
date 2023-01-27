@@ -70,6 +70,9 @@ CLOUDAMQP_URL={MQ Connection Url}
 ANALYTICS_SERVER_QUEUE_CHANNEL={Analytics MQ Channel}
 ORCHESTRATION_SERVER_QUEUE_CHANNEL={Orchestration MQ Channel}
 
+REDISCLOUD_URL={Redis Connection Url}
+REDIS_CONNECTION_LIMIT={Redis Connection Limit}
+
 ACCESS_TOKEN_SECRET={Access Token Secret}
 RESPONSE_ENCRYPTION_SECRET={Response Encryption Secret}
 ```
