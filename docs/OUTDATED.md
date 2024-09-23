@@ -15,8 +15,8 @@ Following packages are not updated in the develop branch yet. So, if you want to
 
 | Package | Current | Wanted | Latest | Location |
 | --- | --- | --- | --- | --- |
-| mongoose | 6.13.2 | 6.13.2 | 8.6.2 | node_modules/mongoose |
-| nodemon | 2.0.22 | 2.0.22 | 3.1.4 | node_modules/nodemon |
+| mongoose | 6.13.2 | 6.13.2 | 8.6.3 | node_modules/mongoose |
+| nodemon | 2.0.22 | 2.0.22 | 3.1.7 | node_modules/nodemon |
 | typescript | 4.9.5 | 4.9.5 | 5.6.2 | node_modules/typescript |
 
 <table align="right"><tr><td><a href="https://opentemplatehub.com"><img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/logo/brand-logo.png" width="50px" alt="oth"/></a></td><td><b>Open Template Hub © 2023</b></td></tr></table>
