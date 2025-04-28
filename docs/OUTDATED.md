@@ -18,8 +18,8 @@ Following packages are not updated in the develop branch yet. So, if you want to
 | @types/express | 4.17.21 | 4.17.21 | 5.0.1 | node_modules/@types/express |
 | body-parser | 1.20.3 | 1.20.3 | 2.2.0 | node_modules/body-parser |
 | express | 4.21.2 | 4.21.2 | 5.1.0 | node_modules/express |
-| mongoose | 6.13.8 | 6.13.8 | 8.13.2 | node_modules/mongoose |
-| nodemon | 2.0.22 | 2.0.22 | 3.1.9 | node_modules/nodemon |
+| mongoose | 6.13.8 | 6.13.8 | 8.14.0 | node_modules/mongoose |
+| nodemon | 2.0.22 | 2.0.22 | 3.1.10 | node_modules/nodemon |
 | typescript | 4.9.5 | 4.9.5 | 5.8.3 | node_modules/typescript |
 
 <table align="right"><tr><td><a href="https://opentemplatehub.com"><img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/logo/brand-logo.png" width="50px" alt="oth"/></a></td><td><b>Open Template Hub © 2023</b></td></tr></table>
