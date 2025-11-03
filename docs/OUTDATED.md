@@ -15,7 +15,7 @@ Following packages are not updated in the develop branch yet. So, if you want to
 
 | Package | Current | Wanted | Latest | Location |
 | --- | --- | --- | --- | --- |
-| @types/express | 4.17.24 | 4.17.24 | 5.0.4 | node_modules/@types/express |
+| @types/express | 4.17.25 | 4.17.25 | 5.0.5 | node_modules/@types/express |
 | body-parser | 1.20.3 | 1.20.3 | 2.2.0 | node_modules/body-parser |
 | dotenv | 16.6.1 | 16.6.1 | 17.2.3 | node_modules/dotenv |
 | express | 4.21.2 | 4.21.2 | 5.1.0 | node_modules/express |
