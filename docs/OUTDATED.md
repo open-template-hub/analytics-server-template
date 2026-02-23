@@ -20,7 +20,7 @@ Following packages are not updated in the develop branch yet. So, if you want to
 | dotenv | 16.6.1 | 16.6.1 | 17.3.1 | node_modules/dotenv |
 | express | 4.22.1 | 4.22.1 | 5.2.1 | node_modules/express |
 | mongoose | 6.13.9 | 6.13.9 | 9.2.1 | node_modules/mongoose |
-| nodemon | 2.0.22 | 2.0.22 | 3.1.11 | node_modules/nodemon |
+| nodemon | 2.0.22 | 2.0.22 | 3.1.14 | node_modules/nodemon |
 | typescript | 4.9.5 | 4.9.5 | 5.9.3 | node_modules/typescript |
 
 <table align="right"><tr><td><a href="https://opentemplatehub.com"><img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/logo/brand-logo.png" width="50px" alt="oth"/></a></td><td><b>Open Template Hub © 2023</b></td></tr></table>
